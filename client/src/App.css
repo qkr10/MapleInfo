@@ -1,3 +1,60 @@
+.form-background{
+  /*background-color: black;*/
+  padding: 100px;
+  text-align: center;
+
+}
+
+.form-logo{
+  width: 400px;
+}
+
+.form-input{
+  padding: 10px;
+  font-size: 15px;
+  width: 400px;
+  height: 50px;
+  margin: 5px;
+}
+
+.form-button{
+  color: white;
+  background-color: black;
+  border: black;
+  padding: 10px;
+  font-size: 15px;
+  width: 400px;
+  height: 60px;
+  min-width: 400px;
+  margin: 30px;
+  font-weight: bold;
+}
+
+.form-social-button{
+  border-width: 1px;
+  border: white;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  width: 400px;
+  height: 40px;
+  min-width: 400px;
+  margin: 5px;
+}
+
+.form-link{
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.2s; /* 투명도 변화를 부드럽게 만듭니다. */
+  margin: 10px;
+
+  /* 마우스를 올렸을 때 투명도 조정 */
+  &:hover {
+    opacity: 0.7; /* 마우스를 올렸을 때 글자를 70% 투명하게 만듭니다. */
+  }
+}
+
 .App {
   text-align: center;
 }

@@ -1,59 +1,56 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom'; // Link 컴포넌트 추가
-function SignIn() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+import { Route, Link } from 'react-router-dom';
+import MapleText from '../MapleText.jpg'
 
-    const handleSignIn = () => {
-        // 여기에 로그인 처리 로직을 추가합니다.
-        console.log('로그인 시도:', email, password);
-    }
+function SignIn() {
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="card mt-5">
-                        <div className="card-header">로그인</div>
-                        <div className="card-body">
-                            <form>
-                                <div className="form-group">
-                                    <label htmlFor="email">이메일 주소</label>
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        id="email"
-                                        placeholder="이메일을 입력하세요"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="password">비밀번호</label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        placeholder="비밀번호를 입력하세요"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                </div>
-                                <button type="button" className="btn btn-primary" onClick={handleSignIn}>
-                                    로그인
-                                </button>
-                            </form>
-                            <Link to="/Signup" style={{ textDecoration: 'none' }}>
-                                <button type="button" className="btn btn-primary">
-                                    회원가입
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
+        <div>
+            <form onSubmit={"#"} className={"form-background"}>
+                <div>
+                    <img className={"form-logo"} src={MapleText} alt="메이플 이미지" />
                 </div>
-            </div>
+                <div>
+                    <input
+                        className={"form-input"}
+                        type={"text"}
+                        placeholder={"아이디를 입력해주세요"}
+                    />
+                </div>
+                <div>
+                    <input
+                        className={"form-input"}
+                        type={"password"}
+                        placeholder={"비밀번호를 입력해주세요"}/>
+                </div>
+                <button type={"submit"} className={"form-button"}>
+                    MapleInFo 로그인
+                </button>
+                <p>
+                    <Link className={"form-link"}>회원가입</Link>
+                    <Link className={"form-link"}>ID 찾기</Link>
+                    <Link className={"form-link"}>비밀번호 찾기</Link>
+                </p>
+                <div>
+                    <button style={{ backgroundColor: 'rgb(3, 199, 90)' }} className={"form-social-button"}>
+                        <span></span><span>Naver 계정으로 로그인</span>
+                    </button>
+                </div>
+                <div>
+                    <button style={{ backgroundColor: '#4285F4' }} className={"form-social-button"}>
+                        Google 계정으로 로그인
+                    </button>
+                </div>
+                <div>
+                    <button style={{ backgroundColor: '#FEE500', color:'black'}} className={"form-social-button"}>
+                        Kakao 계정으로 로그인
+                    </button>
+                </div>
+            </form>
+
         </div>
+
     );
 }
 
