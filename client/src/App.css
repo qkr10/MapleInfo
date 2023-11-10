@@ -1,9 +1,9 @@
 .form-background{
-  /*background-color: black;*/
   padding: 100px;
   text-align: center;
-
 }
+
+/* 로그인 창 CSS */
 
 .form-logo{
   width: 400px;
@@ -54,6 +54,30 @@
     opacity: 0.7; /* 마우스를 올렸을 때 글자를 70% 투명하게 만듭니다. */
   }
 }
+
+.form-div-1 {
+  margin-right: 10px;
+}
+
+.form-div-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container {
+  display : flex;
+  justify-content : center;  /* 좌우정렬 */
+  align-items : center;  /* 상하정렬 */
+  flex-direction : column; /* 세로정렬 */
+  flex-wrap : wrap;  /* 폭이 넘치는 요소 wrap 처리 */
+}
+
+.box {
+  flex-grow : 2;  /* 폭이 상대적으로 몇배인지 결정 */
+}
+
+/* 로그인, 회원가입 CSS */
 
 .App {
   text-align: center;
