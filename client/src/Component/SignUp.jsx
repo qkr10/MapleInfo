@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import MapleText from '../MapleText.jpg';
 
 function SignUp() {
     const [id, setId] = useState('');
@@ -14,15 +13,40 @@ function SignUp() {
     const handleNickNameChange = (e) => setNickName(e.target.value);
     const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // 실제로 서버로 데이터를 보내는 등의 로직을 추가할 수 있습니다.
+    const signUp = (e) => {
+        e.preventDefault(); // 기본 제출 동작 방지
+        fetch('http://localhost:3000/signUp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // JSON 형식으로 보내기 위한 헤더
+            },
+            body: JSON.stringify({
+                id: id,
+                passWord: passWord,
+                nickName: nickName,
+                phoneNumber: phoneNumber
+            })
+        })
+            .then(response => response.json())
+            .then(result => {
+                // 서버로부터 받은 응답을 확인하고, 성공적으로 전송되었을 때 알림 창을 띄웁니다.
+                if (result.message === '데이터가 성공적으로 전송되었습니다.') {
+                    alert('회원가입이 성공적으로 완료되었습니다!');
+                } else {
+                    // 다른 응답을 받았을 경우에 대한 처리
+                    // 예를 들어, 회원가입 실패 등의 메시지를 여기에 추가할 수 있습니다.
+                    alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+                }
+            })
+            .catch(error => console.error('에러 발생: ', error));
     };
 
     return (
         <div>
-            <form className={"flex-container"}>
-                <span>회원가입</span>
+            <form className={"flex-container"} onSubmit={signUp}>
+                <div>
+                    <img className={"form-logo"} src={MapleText} alt="메이플 이미지" />
+                </div>
                 <div className={"box"}>
                     <div>
                         <span>아이디</span>
@@ -76,7 +100,7 @@ function SignUp() {
                         type={"text"}
                         placeholder={"휴대폰 번호를 입력 해주세요"}/>
                 </div>
-                <button  type={"submit"} className={"form-button"}>가입하기</button>
+                <button type={"submit"} className={"form-button"}>가입하기</button>
             </form>
         </div>
     );

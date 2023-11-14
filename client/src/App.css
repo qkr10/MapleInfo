@@ -1,5 +1,5 @@
 .form-background{
-  padding: 100px;
+  padding: 50px;
   text-align: center;
 }
 
@@ -66,6 +66,7 @@
 }
 
 .flex-container {
+  padding: 50px;
   display : flex;
   justify-content : center;  /* 좌우정렬 */
   align-items : center;  /* 상하정렬 */
