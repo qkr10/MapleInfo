@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+const bcrypt = require('bcrypt');
 
 // JSON body parser 설정
 app.use(bodyParser.json());
@@ -10,7 +11,7 @@ app.use(bodyParser.json());
 // CORS 설정
 app.use(cors());
 
-app.set('port', process.env.PORT || 3000);
+
 
 // MySQL 연결 설정
 const connection = mysql.createConnection({
@@ -29,30 +30,78 @@ connection.connect((err) => {
     console.log('MySQL에 성공적으로 연결되었습니다.');
 });
 
+
+// 회원가입 로직
 app.post('/signUp', (req, res) => {
     const { id, passWord, nickName, phoneNumber } = req.body;
 
-    console.log('ID:', id);
-    console.log('Password:', passWord);
-    console.log('Nickname:', nickName);
-    console.log('Phone Number:', phoneNumber);
-
-    // SQL 쿼리 정의
-    const sql = `INSERT INTO user (userId, userPw, userNickName, userPhoneNum, userRegDate) 
-    VALUES (?, ?, ?, ?, NOW())`;
-
-    // SQL 쿼리 실행
-    connection.query(sql, [id, passWord, nickName, phoneNumber], (err, result) => {
+    // 비밀번호 해시 생성
+    bcrypt.hash(passWord, 10, (err, hash) => {
         if (err) {
-            console.error('INSERT 에러:', err);
+            console.error('비밀번호 해시 생성 에러:', err);
             res.status(500).json({ message: '회원가입 실패.' });
             return;
         }
 
-        console.log('회원가입 성공.', result);
-        res.json({ message: '데이터가 성공적으로 전송되었습니다.' });
+        // 해시된 비밀번호로 SQL 쿼리 실행
+        const sql = `INSERT INTO user (userId, userPw, userNickName, userPhoneNum, userRegDate) 
+        VALUES (?, ?, ?, ?, NOW())`;
+
+        connection.query(sql, [id, hash, nickName, phoneNumber], (err, result) => {
+            if (err) {
+                console.error('INSERT 에러:', err);
+                res.status(500).json({ message: '회원가입 실패.' });
+                return;
+            }
+
+            console.log('회원가입 성공.', result);
+            res.json({ message: '데이터가 성공적으로 전송되었습니다.' });
+        });
     });
 });
+
+// 로그인 로직
+app.post('/signIn', (req, res) => {
+    const { id, passWord } = req.body;
+
+    const sql = 'SELECT * FROM user WHERE userId = ?';
+
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error('SELECT 에러:', err);
+            res.status(500).json({ message: '로그인 실패.' });
+            return;
+        }
+
+        if (result.length === 0) {
+            // 해당 아이디의 사용자가 존재하지 않음
+            res.status(401).json({ message: '아이디 또는 비밀번호가 일치하지 않습니다.' });
+            return;
+        }
+
+        const storedHashedPassword = result[0].userPw; // 데이터베이스에 저장된 해시된 비밀번호
+
+        // 저장된 해시된 비밀번호와 입력된 비밀번호 비교
+        bcrypt.compare(passWord, storedHashedPassword, (error, isEqual) => {
+            if (error) {
+                console.error('비밀번호 비교 에러:', error);
+                res.status(500).json({ message: '로그인 실패.' });
+                return;
+            }
+
+            if (isEqual) {
+                // 비밀번호 일치 - 로그인 성공
+                console.log('로그인 성공.', result);
+                res.json({ message: '데이터가 성공적으로 전송되었습니다.' });
+            } else {
+                // 비밀번호 불일치
+                res.status(401).json({ message: '아이디 또는 비밀번호가 일치하지 않습니다.' });
+            }
+        });
+    });
+});
+
+app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');
