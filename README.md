@@ -14,7 +14,9 @@
 <br>
 6. npm install express // express 설치
 <br>
-7. nodemon server.js // 서버 구동
+7. npm install cors // cors 설치
+<br>
+8. nodemon server.js // 서버 구동
 <br>
 
 
