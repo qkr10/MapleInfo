@@ -10,9 +10,11 @@
 <br>
 4. cd server // 서버 디렉토리 이동
 <br>
-5. npm install -g nodemon // 노드몬 설치
+5. npm install -g nodemon // nodemon 설치
 <br>
-6. nodemon server.js // 서버 구동
+6. npm install express // express 설치
+<br>
+7. nodemon server.js // 서버 구동
 <br>
 
 
