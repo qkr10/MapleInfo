@@ -3,6 +3,23 @@
   text-align: center;
 }
 
+.my-profile-container {
+  padding: 20px;
+  border: 2px solid black;
+  margin: 50px auto 0; /* 위쪽에 50px 여백을 주고 수평 가운데 정렬 */
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+  width: 800px;
+}
+
+.my-profile-container td {
+  border: 1px solid black;
+  margin:auto;
+  width: 300px;
+  padding: 20px;
+}
 /* 로그인 창 CSS */
 
 .form-logo{
