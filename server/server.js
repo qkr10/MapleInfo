@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
@@ -10,8 +11,6 @@ app.use(bodyParser.json());
 
 // CORS 설정
 app.use(cors());
-
-
 
 // MySQL 연결 설정
 const connection = mysql.createConnection({
@@ -60,9 +59,19 @@ app.post('/signUp', (req, res) => {
     });
 });
 
+// JSON 파싱을 위한 미들웨어
+app.use(express.json());
+
+app.use(session({
+    secret: 'mySecretKey',
+    resave: false,
+    saveUninitialized: false
+}));
+
 // 로그인 로직
 app.post('/signIn', (req, res) => {
     const { id, passWord } = req.body;
+
 
     const sql = 'SELECT * FROM user WHERE userId = ?';
 
@@ -90,9 +99,12 @@ app.post('/signIn', (req, res) => {
             }
 
             if (isEqual) {
+                // 세션에 사용자 ID 저장
+                req.session.userID = id;
                 // 비밀번호 일치 - 로그인 성공
                 console.log('로그인 성공.', result);
-                res.json({ message: '데이터가 성공적으로 전송되었습니다.' });
+                res.json({ message: '데이터가 성공적으로 전송되었습니다.', sessionID: req.sessionID });
+                console.log(req.session);
             } else {
                 // 비밀번호 불일치
                 res.status(401).json({ message: '아이디 또는 비밀번호가 일치하지 않습니다.' });

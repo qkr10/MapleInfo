@@ -35,7 +35,6 @@ function SignUp() {
                     window.location.href = '/SignIn';
                 } else {
                     // 다른 응답을 받았을 경우에 대한 처리
-                    // 예를 들어, 회원가입 실패 등의 메시지를 여기에 추가할 수 있습니다.
                     alert('회원가입에 실패했습니다. 다시 시도해주세요.');
                 }
             })

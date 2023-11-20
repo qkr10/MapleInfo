@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MapleText from '../MapleText.jpg'
 
 function SignIn() {
@@ -28,9 +28,9 @@ function SignIn() {
                 // 서버로부터 받은 응답을 확인하고, 성공적으로 전송되었을 때 알림 창을 띄웁니다.
                 if (result.message === '데이터가 성공적으로 전송되었습니다.') {
                     alert('로그인 성공');
+                    localStorage.setItem('sessionID', result.sessionID);
+                    window.location.href = '/MainContents';
                 } else {
-                    // 다른 응답을 받았을 경우에 대한 처리
-                    // 예를 들어, 회원가입 실패 등의 메시지를 여기에 추가할 수 있습니다.
                     alert('로그인 실패, 비밀번호를 확인해주세요');
                 }
             })
