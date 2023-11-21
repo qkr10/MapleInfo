@@ -1,6 +1,54 @@
-.form-background{
-  padding: 50px;
+.nb-container{
+  width: 1000px;
+  margin: 5px auto 0;
+
   text-align: center;
+  border: 1px solid black;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+}
+
+.nb-table{
+  font-size: 14px;
+}
+
+.toggle-button {
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-button.checked {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #3498db;
+}
+
+.boss-container{
+  padding: 5px;
+  border: 1px solid black;
+  margin: 5px auto 0; /* 위쪽에 50px 여백을 주고 수평 가운데 정렬 */
+  text-align: center;
+  width: 800px;
+  height: 800px;
+}
+
+.boss-div{
+  border: 1px solid black;
+  display: inline-block;
+  width: 350px;
+  text-align: center;
+  margin: 10px;
+}
+
+.boss-div2{
+  border: 1px solid black;
+  height: 90%;
 }
 
 .my-profile-container {
@@ -21,6 +69,10 @@
   padding: 20px;
 }
 /* 로그인 창 CSS */
+.form-background{
+  padding: 50px;
+  text-align: center;
+}
 
 .form-logo{
   width: 400px;

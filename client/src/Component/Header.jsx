@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useEffect, useState} from 'react';
+import BossCaculator from "./BossCaculator";
 
 function Header(){
 
@@ -37,6 +38,7 @@ function Header(){
                     <Nav className="me-auto">
                         <Nav.Link href="#home">초보자 가이드</Nav.Link>
                         <Nav.Link href="#features">공지사항/업데이트</Nav.Link>
+                        <Nav.Link href="/NoticeBoard">게시판</Nav.Link>
                     </Nav>
                     <Navbar.Collapse id="navbar-dark-example">
                         <Nav>
@@ -45,7 +47,7 @@ function Header(){
                                 title="편의성 기능"
                                 menuVariant="dark"
                             >
-                                <NavDropdown.Item href="#action/3.1">결정석 계산기</NavDropdown.Item>
+                                <NavDropdown.Item href="/BossCaculator">결정석 계산기</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">유니온 배치</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">무릉/수로 환산</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">큐브 사용내역</NavDropdown.Item>
