@@ -3,7 +3,7 @@
   margin: 5px auto 0;
 
   text-align: center;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   padding: 20px;
 
   display: flex;
@@ -12,7 +12,9 @@
 }
 
 .nb-table{
-  font-size: 14px;
+  font-size: 13px;
+  width: 1000px;
+
 }
 
 .toggle-button {

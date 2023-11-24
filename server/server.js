@@ -31,7 +31,7 @@ connection.connect((err) => {
 
 
 // 회원가입 로직
-app.post('/signUp', (req, res) => {
+app.post('/writing', (req, res) => {
     const { id, passWord, nickName, phoneNumber } = req.body;
 
     // 비밀번호 해시 생성
@@ -118,3 +118,5 @@ app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중');
 });
+
+module.exports = connection;
