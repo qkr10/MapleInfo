@@ -1,0 +1,36 @@
+.testContainer {
+    margin-top: 20px;
+    display: flex;
+    /*flex-direction: column;*/
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.weakly-view {
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 13px;
+}
+
+.weakly-view-header{
+    border-bottom: 1px solid;
+    padding: 10px;
+}
+
+.view-details {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.view-details-btn {
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+}
