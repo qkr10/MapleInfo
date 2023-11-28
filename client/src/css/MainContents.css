@@ -19,6 +19,25 @@
     padding: 10px;
 }
 
+.weakly-view-text{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.weakly-view-text-small{
+    margin-top: 10px;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.weakly-view-text-duration{
+    color: grey;
+    display: block;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 10px;
+}
+
 .view-details {
     color: white;
     text-decoration: none;
@@ -33,4 +52,15 @@
     height: 30px;
     width: 200px;
     margin: 10px;
+}
+
+.test-view {
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 13px;
+}
+
+.test-view-header{
+    padding: 10px;
 }
