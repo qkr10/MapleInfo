@@ -1,4 +1,4 @@
-.testContainer {
+.main-contents-container {
     margin-top: 20px;
     display: flex;
     /*flex-direction: column;*/
@@ -7,16 +7,104 @@
     justify-content: center;
 }
 
-.weakly-view {
-    border: 1px solid;
+.weakly-view1 {
+    border: 1px solid #ff8418;
     border-radius: 4px;
     margin: 10px;
     font-size: 13px;
 }
 
-.weakly-view-header{
-    border-bottom: 1px solid;
+.weakly-view-header1 {
+    border-bottom: 1px solid #ff8418;
     padding: 10px;
+}
+
+.view-details-btn1 {
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+    background-color: #ff8418;
+    border: 1px solid white;
+}
+
+.weakly-view-header-text1{
+    color: #ff8418;
+}
+
+.weakly-view2 {
+    border: 1px solid #3d579b;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 13px;
+}
+
+.weakly-view-header2 {
+    border-bottom: 1px solid #3d579b;
+    padding: 10px;
+}
+
+.view-details-btn2 {
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+    background-color: #3d579b;
+    border: 1px solid white;
+}
+
+.weakly-view-header-text2{
+    color: #3d579b;
+}
+
+.weakly-view3 {
+    border: 1px solid #ffcf19;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 13px;
+}
+
+.weakly-view-header3 {
+    border-bottom: 1px solid #ffcf19;
+    padding: 10px;
+}
+
+.view-details-btn3 {
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+    background-color: #ffcf19;
+    border: 1px solid white;
+}
+
+.weakly-view-header-text3{
+    color: #ffcf19;
+}
+
+.weakly-view4 {
+    border: 1px solid #8dd28d;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 13px;
+}
+
+.weakly-view-header4 {
+    border-bottom: 1px solid #8dd28d;
+    padding: 10px;
+}
+
+.view-details-btn4 {
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    margin: 10px;
+    background-color: #8dd28d;
+    border: 1px solid white;
+}
+
+.weakly-view-header-text4{
+    color: #8dd28d;
 }
 
 .weakly-view-text{
@@ -47,20 +135,36 @@
     height: 100%;
 }
 
-.view-details-btn {
-    font-size: 13px;
-    height: 30px;
-    width: 200px;
-    margin: 10px;
+.today-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 요소들을 행을 넘어가면서 배치 */
+    justify-content: center; /* 요소들을 수평 가운데 정렬 */
+    align-items: center; /* 요소들을 수직 가운데 정렬 */
 }
 
-.test-view {
-    border: 1px solid;
+.today-rank-view {
+    border: 1px solid #ccc;
     border-radius: 4px;
     margin: 10px;
     font-size: 13px;
+    width: 40%;
 }
 
-.test-view-header{
-    padding: 10px;
+.today-rank-view-header {
+    padding: 15px;
+    background-color: #f0f0f0;
+}
+
+.today-rank-table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+}
+
+.today-rank-table th,
+.today-rank-table td {
+    border: 1px solid #ccc;
+    padding: 4px;
 }

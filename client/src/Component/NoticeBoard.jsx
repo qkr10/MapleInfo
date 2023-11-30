@@ -45,7 +45,7 @@ function NoticeBoard(){
             </div>
             <div style={{ marginTop: "10px", border: "0px solid", display: "flex", alignItems: "center"}}>
                 <input
-                    style={{ height: "30px", flex: "1", border: "none", outline: "none"}}
+                    style={{ height: "30px", flex: "1", border: "1px solid", outline: "none"}}
                     type={"text"}
                     placeholder={"검색어를 입력해주세요"}
                 />

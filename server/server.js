@@ -31,7 +31,7 @@ connection.connect((err) => {
 
 
 // 회원가입 로직
-app.post('/writing', (req, res) => {
+app.post('/signUp', (req, res) => {
     const { id, passWord, nickName, phoneNumber } = req.body;
 
     // 비밀번호 해시 생성
@@ -43,7 +43,7 @@ app.post('/writing', (req, res) => {
         }
 
         // 해시된 비밀번호로 SQL 쿼리 실행
-        const sql = `INSERT INTO user (userId, userPw, userNickName, userPhoneNum, userRegDate) 
+        const sql = `INSERT INTO user (user_id, user_pw, user_nickname, user_phone, user_regdate) 
         VALUES (?, ?, ?, ?, NOW())`;
 
         connection.query(sql, [id, hash, nickName, phoneNumber], (err, result) => {
@@ -73,7 +73,7 @@ app.post('/signIn', (req, res) => {
     const { id, passWord } = req.body;
 
 
-    const sql = 'SELECT * FROM user WHERE userId = ?';
+    const sql = 'SELECT * FROM user WHERE user_id = ?';
 
     connection.query(sql, [id], (err, result) => {
         if (err) {
@@ -88,7 +88,7 @@ app.post('/signIn', (req, res) => {
             return;
         }
 
-        const storedHashedPassword = result[0].userPw; // 데이터베이스에 저장된 해시된 비밀번호
+        const storedHashedPassword = result[0].user_pw; // 데이터베이스에 저장된 해시된 비밀번호
 
         // 저장된 해시된 비밀번호와 입력된 비밀번호 비교
         bcrypt.compare(passWord, storedHashedPassword, (error, isEqual) => {
