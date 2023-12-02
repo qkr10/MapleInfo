@@ -72,7 +72,6 @@ app.use(session({
 app.post('/signIn', (req, res) => {
     const { id, passWord } = req.body;
 
-
     const sql = 'SELECT * FROM user WHERE user_id = ?';
 
     connection.query(sql, [id], (err, result) => {
@@ -105,6 +104,7 @@ app.post('/signIn', (req, res) => {
                 console.log('로그인 성공.', result);
                 res.json({ message: '데이터가 성공적으로 전송되었습니다.', sessionID: req.sessionID });
                 console.log(req.session);
+                console.log(req.session.userID);
             } else {
                 // 비밀번호 불일치
                 res.status(401).json({ message: '아이디 또는 비밀번호가 일치하지 않습니다.' });
@@ -112,6 +112,30 @@ app.post('/signIn', (req, res) => {
         });
     });
 });
+
+app.post('/writing', (req, res) => {
+    const { nickname, title, contents } = req.body;
+    //세션으로 찾은
+    const currentUserID = req.session.userID;
+    const findUserNo = `SELECT user_no FROM user WHERE user_id = '${currentUserID}'`;
+    console.log(req.session.userID);
+
+    // // 해시된 비밀번호로 SQL 쿼리 실행
+    // const sql = `INSERT INTO user_post(user_no, user_nickname, post_title, post_content, post_created, post_updated)
+    //     VALUES ('${userno}, ${nickname}', '${title}', '${contents}', NOW(), NOW())`;
+    //
+    // connection.query(sql, (err, result) => {
+    //     if (err) {
+    //         console.error('INSERT 에러:', err);
+    //         res.status(500).json({ message: '게시글 작성 실패했습니다.' });
+    //         return;
+    //     }
+    //
+    //     console.log('게시글 작성 성공했습니다.', result);
+    //     res.json({ message: '데이터가 성공적으로 전송되었습니다.' });
+    // });
+});
+
 
 app.set('port', process.env.PORT || 3000);
 
